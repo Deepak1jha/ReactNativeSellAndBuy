@@ -1,17 +1,12 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import Screen from "./src/component/screen/Screen";
-import Icon from "./src/component/Icon";
-import ListItem from "./src/component/listItem/ListItem";
+import Account from "./src/screens/account/Account";
 
 export default function App() {
   return (
     <Screen>
-      <ListItem
-        title={"Deepak"}
-        subTitle={"kumar jha"}
-        ImageComponent={<Icon backgroundColor={"red"} size={50} name={"email"} iconColor={"white"}/>}
-      />
+     <Account/>
     </Screen>
   );
 }
