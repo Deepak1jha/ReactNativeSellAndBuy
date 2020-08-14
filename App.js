@@ -1,11 +1,10 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import WelcomeScreen from "./src/screens/welcome/WelcomeScreen";
+import ListingDetailScreen from "./src/component/listingDetail/ListingDetailScreen";
 
 export default function App() {
   return (
-    <WelcomeScreen/>
-
+    <ListingDetailScreen/>
   );
 }
 
