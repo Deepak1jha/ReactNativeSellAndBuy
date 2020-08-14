@@ -1,10 +1,14 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import MessageScreen from "./src/component/messages/MessagesScreen";
+import Screen from "./src/component/screen/Screen";
+import Icon from "./src/component/Icon";
 
 export default function App() {
   return (
-    <MessageScreen/>
+    <Screen>
+      <Icon name={"email"} size={50} backgroundColor="red" iconColor={"white"} />
+    </Screen>
   );
 }
 
