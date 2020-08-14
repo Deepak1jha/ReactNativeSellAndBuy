@@ -29,6 +29,7 @@ const data = [
 export default function MessageScreen() {
 
   const [messages, setMessages] = useState(data);
+  const [refreshing, setRefreshing] = useState(false);
   const handleDelete = id => {
     setMessages(messages.filter(m => m.id !== id))
   }
@@ -47,6 +48,17 @@ export default function MessageScreen() {
             renderRightActions={() => <ListItemDeleteAction onPress={() => handleDelete(item.id)}/>}
           />}
         ItemSeparatorComponent={() => <ListItemSeparator/>}
+        refreshing={refreshing}
+        onRefresh={() => {
+          setMessages([
+            {
+              id: 4,
+              title: "T4",
+              description: "D4",
+              image: require("../../../assets/couch.jpg")
+            }
+          ])
+        }}
       /></Screen>
   );
 }
