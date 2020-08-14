@@ -3,7 +3,7 @@ import {FlatList, StyleSheet, View} from 'react-native';
 import Screen from "../../component/screen/Screen";
 import ListItem from "../../component/listItem/ListItem";
 import colors from "../../config/colors";
-import Icon from "../../component/Icon";
+import Icon from "../../component/icon/Icon";
 import ListItemSeparator from "../../component/listItemSeparator/ListItemSeparator";
 
 const menuItems = [
