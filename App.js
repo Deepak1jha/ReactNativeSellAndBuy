@@ -1,10 +1,10 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import ListingDetailScreen from "./src/component/listingDetail/ListingDetailScreen";
+import MessageScreen from "./src/component/messages/MessagesScreen";
 
 export default function App() {
   return (
-    <ListingDetailScreen/>
+    <MessageScreen/>
   );
 }
 
@@ -13,6 +13,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
-
   }
 })
