@@ -8,7 +8,6 @@ export default function PickerItem({label, onPress}) {
       <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   )
-
 }
 const styles = StyleSheet.create({
   text:{
