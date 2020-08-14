@@ -1,12 +1,12 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import Screen from "./src/component/screen/Screen";
-import ListingScreen from "./src/screens/listingScreen/ListingScreen";
+import AppTextInput from "./src/component/appTextInput/AppTextInput";
 
 export default function App() {
   return (
     <Screen>
-      <ListingScreen/>
+      <AppTextInput placeholder={"username"} icon={"email"}/>
     </Screen>
   );
 }
