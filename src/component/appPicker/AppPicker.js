@@ -1,20 +1,30 @@
 import React, {useState} from 'react';
-import {Modal, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {FlatList, Modal, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 import {MaterialCommunityIcons, MaterialIcons} from '@expo/vector-icons';
-import colors from "../config/colors";
+import colors from "../../config/colors";
+import Screen from "../screen/Screen";
+import PickerItem from "../pickerItem/PickerItem";
 
-export default function AppPicker({icon = "email", placeholder, ...otherProps}) {
+export default function AppPicker({icon = "email", items, placeholder, ...otherProps}) {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.container}>
           {icon && <MaterialIcons name={icon} size={20} color={colors.mediumGrey} style={styles.icon}/>}
           <Text style={{flex: 1}}>{placeholder}</Text>
           <MaterialCommunityIcons name="chevron-down" size={20} color={colors.mediumGrey}/>
         </View>
       </TouchableWithoutFeedback>
-      <Modal visible={modalVisible} animationType={"slide "}/>
+      <Modal visible={modalVisible} animationType={"slide"}>
+        <Screen>
+          <FlatList
+            data={items}
+            keyExtractor={item => item.value.toString()}
+            renderItem={({item}) => <PickerItem label={item.label} onPress={() => console.log(item.label)}/>}
+          />
+        </Screen>
+      </Modal>
     </>
   );
 }
