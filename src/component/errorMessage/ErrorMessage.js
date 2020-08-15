@@ -1,5 +1,5 @@
 import React from 'react';
-import Text, {StyleSheet} from "react-native";
+import {StyleSheet, Text} from "react-native";
 
 
 export default function ErrorMessage({error}) {

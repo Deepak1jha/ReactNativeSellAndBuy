@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 import Screen from "./src/component/screen/Screen";
-import Login from "./src/screens/login/Login";
+import ListingEditScreen from "./src/screens/listingEditScreen/ListingEditScreen";
 
 const categories = [
   {label: "Mobile", value: 1},
@@ -11,7 +11,7 @@ const categories = [
 ]
 
 export default function App() {
-  const [category, setCategory] = useState();
+  // const [category, setCategory] = useState();
   return (
     <Screen>
       {/*<AppPicker*/}
@@ -20,7 +20,8 @@ export default function App() {
       {/*  items={categories}*/}
       {/*  placeholder={"Category"}*/}
       {/*  icon={"apps"}/>*/}
-      <Login/>
+      {/*<Login/>*/}
+      <ListingEditScreen/>
     </Screen>
   );
 }

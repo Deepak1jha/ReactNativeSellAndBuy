@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet} from "react-native";
 import Screen from "../../component/screen/Screen";
-import {Formik} from "formik";
 import * as Yup from "yup";
 import AppFormField from "../../component/appFormField/AppFormField";
 import SubmitButton from "../../component/submitButton/SubmitButton";
@@ -18,8 +17,8 @@ export default function Login() {
     <Screen style={styles.container}>
       <Image source={require("../../../assets/logo-red.png")} style={styles.logo}/>
       <AppForm initialValues={{username: "", password: ""}}
-              onSubmit={values => console.log(values)}
-              validationSchema={validationSchema}
+               onSubmit={values => console.log(values)}
+               validationSchema={validationSchema}
       >
         <AppFormField
           name="username"
@@ -38,7 +37,7 @@ export default function Login() {
           secureTextEntry
         />
         <SubmitButton title={"Login"}/>
-       
+
       </AppForm>
 
 
