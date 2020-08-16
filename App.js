@@ -3,6 +3,7 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -44,7 +45,7 @@ function Profile({route}) {
 export default function App() {
   return (
     <NavigationContainer>
-     <TabNavigator/>
+      <TabNavigator/>
     </NavigationContainer>
   );
 }
@@ -57,9 +58,24 @@ const StackNavigator = () => (
 )
 
 const TabNavigator = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Account" component={Account}/>
-    <Tab.Screen name="Profile" component={Profile}/>
+  <Tab.Navigator
+    tabBarOptions={{
+      activeBackgroundColor: "tomato",
+      activeTintColor: "white",
+      inactiveBackgroundColor: "grey",
+      inactiveTintColor: "white"
+    }}
+  >
+    <Tab.Screen
+      name="Account"
+      component={Account}
+      options={{tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="account" size={size} color={color}/>}}
+    />
+    <Tab.Screen
+      name="Profile"
+      component={Profile}
+      options={{tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="face-profile" size={size} color={color}/>}}
+    />
   </Tab.Navigator>
 )
 
