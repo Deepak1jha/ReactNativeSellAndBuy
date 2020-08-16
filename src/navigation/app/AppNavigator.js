@@ -5,6 +5,7 @@ import FeedNavigator from "../feed/FeedNavigator";
 import AccountNavigator from "../account/AccountNavigator";
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import ListingRoundButton from "../../component/navigationListingButton/ListingRoundButton";
+import Routes from "../../routes/Routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ const AppNavigator = () => (
       name="ListingEditScreen"
       component={ListingEditScreen}
       options={({navigation}) => ({
-        tabBarButton: () => <ListingRoundButton onPress={() => navigation.navigate("ListingEditScreen")}/>
+        tabBarButton: () => <ListingRoundButton onPress={() => navigation.navigate(Routes.LISTING_EDIT_SCREEN)}/>
       })}
     />
     <Tab.Screen
