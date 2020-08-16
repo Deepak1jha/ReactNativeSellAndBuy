@@ -3,11 +3,14 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import {Feather, MaterialCommunityIcons} from '@expo/vector-icons';
+import ListingScreen from "./src/screens/listingScreen/ListingScreen";
+import Account from "./src/screens/account/Account";
+import ListingEditScreen from "./src/screens/listingEditScreen/ListingEditScreen";
+import AuthNavigator from "./src/navigation/AuthNavigator";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 
 function product({navigation}) {
   return (
@@ -26,13 +29,6 @@ function productDetail({route}) {
   );
 }
 
-function Account({route}) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Account</Text>
-    </View>
-  );
-}
 
 function Profile({route}) {
   return (
@@ -45,14 +41,14 @@ function Profile({route}) {
 export default function App() {
   return (
     <NavigationContainer>
-      <TabNavigator/>
+      <AuthNavigator/>
     </NavigationContainer>
   );
 }
 
 const StackNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Product" component={product}/>
+    <Stack.Screen name="Product" component={ListingScreen}/>
     <Stack.Screen name="Product_Detail" component={productDetail}/>
   </Stack.Navigator>
 )
@@ -67,14 +63,19 @@ const TabNavigator = () => (
     }}
   >
     <Tab.Screen
+      name="ProductList"
+      component={StackNavigator}
+      options={{tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="home" size={size} color={color}/>}}
+    />
+    <Tab.Screen
+      name="uploadNewProduct"
+      component={ListingEditScreen}
+      options={{tabBarIcon: ({size, color}) => <Feather name="plus-circle" size={50} color={color}/>}}
+    />
+    <Tab.Screen
       name="Account"
       component={Account}
       options={{tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="account" size={size} color={color}/>}}
-    />
-    <Tab.Screen
-      name="Profile"
-      component={Profile}
-      options={{tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="face-profile" size={size} color={color}/>}}
     />
   </Tab.Navigator>
 )
