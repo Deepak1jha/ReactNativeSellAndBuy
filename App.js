@@ -1,16 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View,Button} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 
 function product({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Product List Screen</Text>
-      <Button title="Click" onPress={()=>navigation.navigate("Product_Detail",{name:"Deepak kumar jha"})}/>
+      <Button title="Click" onPress={() => navigation.navigate("Product_Detail", {name: "Deepak kumar jha"})}/>
     </View>
   );
 }
@@ -23,10 +25,26 @@ function productDetail({route}) {
   );
 }
 
+function Account({route}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Account</Text>
+    </View>
+  );
+}
+
+function Profile({route}) {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Profile</Text>
+    </View>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
-      <StackNavigator/>
+     <TabNavigator/>
     </NavigationContainer>
   );
 }
@@ -38,6 +56,12 @@ const StackNavigator = () => (
   </Stack.Navigator>
 )
 
+const TabNavigator = () => (
+  <Tab.Navigator>
+    <Tab.Screen name="Account" component={Account}/>
+    <Tab.Screen name="Profile" component={Profile}/>
+  </Tab.Navigator>
+)
 
 const styles = StyleSheet.create({
   container: {
