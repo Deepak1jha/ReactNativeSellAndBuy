@@ -1,25 +1,33 @@
 import React from 'react';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import ListingScreen from "../../screens/listingScreen/ListingScreen";
 import ListingEditScreen from "../../screens/listingEditScreen/ListingEditScreen";
-import Account from "../../screens/account/Account";
 import FeedNavigator from "../feed/FeedNavigator";
 import AccountNavigator from "../account/AccountNavigator";
+import {MaterialCommunityIcons} from '@expo/vector-icons';
+import ListingRoundButton from "../../component/navigationListingButton/ListingRoundButton";
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => (
   <Tab.Navigator
-    tabBarOptions={{
-      activeBackgroundColor: "tomato",
-      activeTintColor: "white",
-      inactiveBackgroundColor: "grey",
-      inactiveTintColor: "white"
-    }}
   >
-    <Tab.Screen name="FeedNavigator" component={FeedNavigator}/>
-    <Tab.Screen name="ListingEditScreen" component={ListingEditScreen}/>
-    <Tab.Screen name="AccountNavigator" component={AccountNavigator}/>
+    <Tab.Screen
+      name="FeedNavigator"
+      component={FeedNavigator}
+      options={{tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="home" size={size} color={color}/>}}
+    />
+    <Tab.Screen
+      name="ListingEditScreen"
+      component={ListingEditScreen}
+      options={({navigation}) => ({
+        tabBarButton: () => <ListingRoundButton onPress={() => navigation.navigate("ListingEditScreen")}/>
+      })}
+    />
+    <Tab.Screen
+      name="AccountNavigator"
+      component={AccountNavigator}
+      options={{tabBarIcon: ({size, color}) => <MaterialCommunityIcons name="account" size={size} color={color}/>}}
+    />
 
   </Tab.Navigator>
 )
