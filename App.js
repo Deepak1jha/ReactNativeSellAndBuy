@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet} from 'react-native';
 import Screen from "./src/component/screen/Screen";
 import ListingEditScreen from "./src/screens/listingEditScreen/ListingEditScreen";
