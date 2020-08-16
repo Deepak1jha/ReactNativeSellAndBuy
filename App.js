@@ -7,7 +7,8 @@ import {Feather, MaterialCommunityIcons} from '@expo/vector-icons';
 import ListingScreen from "./src/screens/listingScreen/ListingScreen";
 import Account from "./src/screens/account/Account";
 import ListingEditScreen from "./src/screens/listingEditScreen/ListingEditScreen";
-import AuthNavigator from "./src/navigation/AuthNavigator";
+import AuthNavigator from "./src/navigation/auth/AuthNavigator";
+import NavigationTheme from "./src/navigation/theme/NavigationTheme";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,7 +41,7 @@ function Profile({route}) {
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={NavigationTheme}>
       <AuthNavigator/>
     </NavigationContainer>
   );
