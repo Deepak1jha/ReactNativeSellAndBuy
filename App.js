@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
-import {StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Button, Image, StyleSheet} from 'react-native';
 import Screen from "./src/component/screen/Screen";
-import MessagesScreen from "./src/component/messages/MessagesScreen";
 import * as Permissions from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function App() {
+
+  const [imageUri, setImageUri] = useState("");
 
   const requestPermission = async () => {
     const {granted} = await Permissions.askAsync(Permissions.CAMERA)
@@ -14,12 +16,25 @@ export default function App() {
   }
 
   useEffect(() => {
-    requestPermission();
+    requestPermission().then(r => console.log("granted"));
   }, [])
+
+  const selectImage = async () => {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      if (!result.cancelled) {
+        setImageUri(result.uri)
+      }
+      // result.
+    } catch (e) {
+      console.log("Error Reading Message")
+    }
+  }
 
   return (
     <Screen>
-      <MessagesScreen/>
+      <Button title={"Click"} onPress={() => selectImage()}/>
+      <Image source={{uri: imageUri}} style={{width: 200, height: 200}}/>
     </Screen>
   );
 }
