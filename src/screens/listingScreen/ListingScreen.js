@@ -32,7 +32,7 @@ const listing = [
 
 ]
 
-export default function ListingScreen(props) {
+export default function ListingScreen({navigation}) {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -43,6 +43,7 @@ export default function ListingScreen(props) {
             title={item.title}
             subtitle={"$" + item.price}
             image={item.image}
+            onPress={()=>navigation.navigate("ListingDetailScreen",item)}
           />
         }
       />

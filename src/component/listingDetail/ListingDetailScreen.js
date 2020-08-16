@@ -4,13 +4,14 @@ import colors from "../../config/colors";
 import ListItem from "../listItem/ListItem";
 
 
-export default function ListingDetailScreen() {
+export default function ListingDetailScreen({route}) {
+  const listing = route.params;
   return (
     <View>
-      <Image style={styles.image} source={require("../../../assets/jacket.jpg")}/>
+      <Image style={styles.image} source={listing.image}/>
       <View style={styles.detailContainer}>
-        <Text style={styles.title}>asdasdadas</Text>
-        <Text style={styles.price}>sdfsdfsdfs</Text>
+        <Text style={styles.title}>{listing.title}</Text>
+        <Text style={styles.price}>${listing.price}</Text>
         <View style={styles.userContainer}>
           <ListItem subTitle={"5 Items Listing"} title={"deepak jha"} image={require("../../../assets/deepak.png")}/>
         </View>
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginVertical: 10
   },
-  userContainer:{
-    marginVertical:40
+  userContainer: {
+    marginVertical: 40
   }
 })
