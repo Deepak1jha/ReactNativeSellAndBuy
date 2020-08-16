@@ -19,11 +19,12 @@ const menuItems = [
     icon: {
       name: "email",
       backgroundColor: colors.secondary
-    }
+    },
+    targetScreen: "Messages",
   }
 ]
 
-export default function Account() {
+export default function Account({navigation}) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -42,6 +43,7 @@ export default function Account() {
                       backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={()=>navigation.navigate(item.targetScreen)}
               ItemSeparatorComponent={() => ListItemSeparator}
             />}
         />
