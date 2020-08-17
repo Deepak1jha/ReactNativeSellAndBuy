@@ -2,14 +2,15 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import NavigationTheme from "./src/navigation/theme/NavigationTheme";
 import AppNavigator from "./src/navigation/app/AppNavigator";
-import NetInfo from '@react-native-community/netinfo';
+import {useNetInfo} from '@react-native-community/netinfo';
+import {View,Text} from 'react-native';
 
 export default function App() {
-  NetInfo.addEventListener(netInfo=>console.log(netInfo))
-  return (
+  const netInfo = useNetInfo();
+  return netInfo.isInternetReachable ? (
     <NavigationContainer theme={NavigationTheme}>
       <AppNavigator/>
     </NavigationContainer>
-  );
+  ) : <View><Text>Cant Find Any NetWork</Text></View>
 }
 
