@@ -1,9 +1,9 @@
 import React from 'react';
 import {useNetInfo} from '@react-native-community/netinfo';
 import NavigationTheme from "./src/navigation/theme/NavigationTheme";
-import AppNavigator from "./src/navigation/app/AppNavigator";
 import {NavigationContainer} from "@react-navigation/native";
 import OfflineAlert from "./src/component/offlineAlert/OfflineAlert";
+import AuthNavigator from "./src/navigation/auth/AuthNavigator";
 
 export default function App() {
   const netInfo = useNetInfo();
@@ -11,7 +11,7 @@ export default function App() {
     <>
       <OfflineAlert/>
       <NavigationContainer theme={NavigationTheme}>
-        <AppNavigator/>
+        <AuthNavigator/>
       </NavigationContainer>
     </>
   )

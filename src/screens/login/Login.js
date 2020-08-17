@@ -5,19 +5,24 @@ import * as Yup from "yup";
 import AppFormField from "../../component/appFormField/AppFormField";
 import SubmitButton from "../../component/submitButton/SubmitButton";
 import AppForm from "../../component/appForm/AppForm";
+import AuthService from "../../service/auth/AuthService";
 
 const validationSchema = Yup.object().shape({
-  username: Yup.string().required().email().label("Username"),
-  password: Yup.string().required().min(4).label("Password")
+  username: Yup.string().required().label("Username"),
+  password: Yup.string().required().min(2).label("Password")
 })
 
 export default function Login() {
+
+  const handleSubmit = async ({username, password}) => {
+    const result = await AuthService.login(username, password);
+  }
 
   return (
     <Screen style={styles.container}>
       <Image source={require("../../../assets/logo-red.png")} style={styles.logo}/>
       <AppForm initialValues={{username: "", password: ""}}
-               onSubmit={values => console.log(values)}
+               onSubmit={handleSubmit}
                validationSchema={validationSchema}
       >
         <AppFormField
@@ -37,7 +42,6 @@ export default function Login() {
           secureTextEntry
         />
         <SubmitButton title={"Login"}/>
-
       </AppForm>
 
 
