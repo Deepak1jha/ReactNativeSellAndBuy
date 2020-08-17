@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useContext} from 'react';
 import {Image, StyleSheet} from "react-native";
 import Screen from "../../component/screen/Screen";
 import * as Yup from "yup";
@@ -6,16 +6,31 @@ import AppFormField from "../../component/appFormField/AppFormField";
 import SubmitButton from "../../component/submitButton/SubmitButton";
 import AppForm from "../../component/appForm/AppForm";
 import AuthService from "../../service/auth/AuthService";
+import ErrorMessage from "../../component/errorMessage/ErrorMessage";
+import jwtDecode from "jwt-decode";
+import AuthContext from "../../auth/context/AuthContext";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required().label("Username"),
   password: Yup.string().required().min(2).label("Password")
 })
 
-export default function Login() {
+export default function Login(props) {
 
+  const authContext = useContext(AuthContext);
+  console.log(authContext)
+  console.log(authContext)
+
+
+  const [loginFailed, setLoginFailed] = useState(false);
   const handleSubmit = async ({username, password}) => {
     const result = await AuthService.login(username, password);
+    // console.log(result.data.accessToken)
+    if (result.status !== 200) {
+      setLoginFailed(false)
+    } else {
+      authContext.setAccessToken(result.data.accessToken)
+    }
   }
 
   return (
@@ -25,6 +40,7 @@ export default function Login() {
                onSubmit={handleSubmit}
                validationSchema={validationSchema}
       >
+        {loginFailed && <ErrorMessage error={"Invalid Username Or Password"}/>}
         <AppFormField
           name="username"
           icon="email"
