@@ -1,8 +1,8 @@
 import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import Screen from "../../component/screen/Screen";
-import Card from "../../component/card/Card";
 import colors from "../../config/colors";
+import Card from "../../component/card/Card";
 
 const listing = [
   {
@@ -43,7 +43,7 @@ export default function ListingScreen({navigation}) {
             title={item.title}
             subtitle={"$" + item.price}
             image={item.image}
-            onPress={()=>navigation.navigate("ListingDetailScreen",item)}
+            onPress={() => navigation.navigate("ListingDetailScreen", item)}
           />
         }
       />

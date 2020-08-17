@@ -27,7 +27,6 @@ const categories = [
 export default function ListingEditScreen({items, name, placeholder}) {
 
   const location = useLocation();
-  // const {errors, setFieldValue, touched, values} = useFormikContext();
   return (
     <Screen style={styles.container}>
       <AppForm

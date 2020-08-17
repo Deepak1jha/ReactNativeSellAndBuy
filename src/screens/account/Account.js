@@ -43,7 +43,7 @@ export default function Account({navigation}) {
                       backgroundColor={item.icon.backgroundColor}
                 />
               }
-              onPress={()=>navigation.navigate(item.targetScreen)}
+              onPress={() => navigation.navigate(item.targetScreen)}
               ItemSeparatorComponent={() => ListItemSeparator}
             />}
         />
