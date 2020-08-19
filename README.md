@@ -26,4 +26,4 @@
 ## Product Upload
 ##
 
-![Screenshot_2020-08-19-14-32-33-833_host exp exponent](https://user-images.githubusercontent.com/25522431/90615522-df882700-e229-11ea-87d2-53b0cc2ae514.jpg)
+![Screenshot_2020-08-19-15-16-43-070_host exp exponent](https://user-images.githubusercontent.com/25522431/90619731-30e6e500-e22f-11ea-868d-f4708d7246ed.jpg)
