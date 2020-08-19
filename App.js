@@ -35,10 +35,5 @@ export default function App() {
       </NavigationContainer>
     </AuthContext.Provider>
   )
-  // return netInfo.isInternetReachable ? (
-  //   <NavigationContainer theme={NavigationTheme}>
-  //     <AppNavigator/>
-  //   </NavigationContainer>
-  // ) : <View><Text>Cant Find Any NetWork</Text></View>
 }
 

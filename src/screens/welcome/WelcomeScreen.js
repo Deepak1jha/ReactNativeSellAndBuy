@@ -5,7 +5,7 @@ import AppButton from "../../component/button/AppButton";
 export default function WelcomeScreen({navigation}) {
   return (
     <ImageBackground
-      blurRadius={5}
+      blurRadius={4}
       style={styles.background}
       source={require("../../../assets/background.jpg")}>
       <View style={styles.logoContainer}>
