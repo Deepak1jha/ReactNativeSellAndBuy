@@ -1,9 +1,15 @@
 import axios from "axios";
 import {BASE_URL} from "../url/BaseUrl";
+import {getAccessToken} from "../../auth/authStorage/AuthStorage";
 
 let client = axios.create({
   baseURL: `${BASE_URL}`
 });
+
+client.defaults.headers.common[
+  "Authorization"
+  ] = `Bearer ${getAccessToken()}`;
+
 
 const axiosInstance = function (options) {
   const onSuccess = function (response) {

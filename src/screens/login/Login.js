@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Image, StyleSheet} from "react-native";
 import Screen from "../../component/screen/Screen";
 import * as Yup from "yup";
@@ -7,8 +7,7 @@ import SubmitButton from "../../component/submitButton/SubmitButton";
 import AppForm from "../../component/appForm/AppForm";
 import AuthService from "../../service/auth/AuthService";
 import ErrorMessage from "../../component/errorMessage/ErrorMessage";
-import AuthContext from "../../auth/context/AuthContext";
-import {setAccessToken} from "../../auth/authStorage/AuthStorage";
+import useAuth from "../../hooks/auth/useAuth";
 
 const validationSchema = Yup.object().shape({
   username: Yup.string().required().label("Username"),
@@ -16,16 +15,14 @@ const validationSchema = Yup.object().shape({
 })
 
 export default function Login(props) {
-
-  const authContext = useContext(AuthContext);
+  const {login} = useAuth();
   const [loginFailed, setLoginFailed] = useState(false);
   const handleSubmit = async ({username, password}) => {
     const result = await AuthService.login(username, password);
     if (result.status !== 200) {
       setLoginFailed(false)
     } else {
-      authContext.setAccessToken(result.data.accessToken);
-      await setAccessToken(result.data.accessToken);
+      login(result.data.accessToken)
     }
   }
 
